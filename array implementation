@@ -1,0 +1,96 @@
+//Array Implemetation Of Stack 
+public class Stack < T >   
+{
+	//Data Members
+	int top ;
+	T arr [];
+	
+	//Constructor That takes one parameter 
+	//that refers to size of array
+    public Stack (int x)
+	{
+	       top =-1;
+           arr = (T[])new Object[x];
+                
+	}
+	
+	//Constructor that intialize the stack with 10 elements 
+	//and has no parameters
+    public Stack ()
+	{
+	       top =-1;
+           arr = (T[])new Object[10];
+                
+	}
+	
+	//Method to push element in the front of stack 
+	public void Push (T Element)
+	{
+            if (top==arr.length-1)
+            {
+                System.out.println("Stack OverFlow");
+                 return ;
+            }
+            
+		arr[++top]=Element;
+	}
+	
+	//Method To Remove Top Element of stack and returns its value 
+	public T Pop ()
+	{
+            if (top==-1)
+            {
+                System.out.println("Stack UnderFlow");
+                return null;
+            }
+             System.out.println("Element "+arr[top]+" Poped From Stack . ");
+		return arr[top--];
+	}
+	
+	//Method Returns Value Of Top Element Of Stack 
+	public T Top ()
+	{
+		return arr[top];
+	}
+	
+	//Method TO Check if stack empty or not 
+    public boolean Empty ()
+    {
+        return top==-1;
+    }
+    
+    //Method To Print Stack 
+	public void print ()
+	{
+		for (int i=0;i<=top;i++)
+		{
+		  System.out.println(arr[i]);
+		}
+	}
+	
+	//Method TO Check If string of Brackets Balanced Or Not 
+	//Returns True Or False
+        public  boolean isBalanced (String s)
+    {
+        Stack<Character> stack = new Stack<>();
+        for (int i=0;i<s.length();i++)
+        {
+            if (s.charAt(i)=='(' ||s.charAt(i)=='['||s.charAt(i)=='{')
+            {
+                stack.Push(s.charAt(i));
+            }
+            else
+            {
+               if(stack.Empty())
+                   return false;
+               char topElement=stack.Pop();
+               if (topElement=='['&&s.charAt(i)!=']'||topElement=='('&&s.charAt(i)!=')'||
+			   topElement=='{'&&s.charAt(i)!='}')
+                   return false;
+            }
+        }
+        return stack.Empty();
+        }
+	
+	
+}
