@@ -84,8 +84,7 @@ public class Stack < T >
                if(stack.Empty())
                    return false;
                char topElement=stack.Pop();
-               if (topElement=='['&&s.charAt(i)!=']'||topElement=='('&&s.charAt(i)!=')'||
-			   topElement=='{'&&s.charAt(i)!='}')
+               if (topElement=='['&&s.charAt(i)!=']'||topElement=='('&&s.charAt(i)!=')'||topElement=='{'&&s.charAt(i)!='}')
                    return false;
             }
         }
