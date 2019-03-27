@@ -1,0 +1,95 @@
+//LList اختصار LinkedList 
+//Simple Implementation Of Stack Using Linked List 
+public class StackLList<T> {
+	//Have only one data member that points
+    //to the top element in the stack 
+    Node<T> Top;
+	
+	//Constructor
+    StackLList()
+    {
+        Top=null;
+    }
+	
+	//Method to push element in the front of stack 
+     public void Push(T key)
+        {
+            if (Top == null)
+            {
+                Top = new Node<>(key);
+            }
+            else
+            {
+                Node<T> node = new Node<>(key);
+                node.next = Top;
+                Top = node;
+                
+            }
+        }
+		
+     //Method To Remove Top Element of stack and returns its value 
+     public T Pop()
+        {
+            Node<T> temp=Top;
+            if (Top == null)
+            {
+                System.out.print("List Is Empty");
+               
+                return null;
+            }
+            Top = Top.next;
+            return temp.key;
+ 
+        }
+     //Method Returns Value Of Top Element Of Stack 
+     public T top()
+        {
+            return Top.key;
+        }
+     //Method TO Check If string of Brackets Balanced Or Not 
+	 //Returns True Or False
+     public boolean isBalanced (String s)
+     {
+         Node<T> temp = Top;
+         StackLList<Character> stack=new StackLList<>();
+         int i = 0;
+         while (temp!=null)
+         {
+             if (s.charAt(i)=='(' ||s.charAt(i)=='['||s.charAt(i)=='{')
+            {
+                stack.Push(s.charAt(i));
+            }
+            else
+            {
+               if(stack.Empty())
+                   return false;
+               char topElement=stack.Pop();
+               if (topElement=='['&&s.charAt(i)!=']'||topElement=='('&&s.charAt(i)!=')'||topElement=='{'&&s.charAt(i)!='}')
+                   return false;
+            }
+             temp=temp.next;
+             i++;
+        }
+             return stack.Empty();
+         }
+          
+		  
+		  //Method TO Check if stack empty or not 
+       public boolean Empty ()
+        {
+            return Top==null;
+        }
+		
+		//Method To Print Stack 
+     public void print()
+        {
+            Node<T> temp = Top;
+            while (Top != null)
+            {
+                System.out.print("|" + Top.key + "|-->");
+                Top = Top.next;
+            }
+            System.out.println();
+            Top = temp;
+        }
+}
