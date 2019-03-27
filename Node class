@@ -1,0 +1,18 @@
+public class Node<T>
+    {
+       
+        T key ;
+       Node<T> next;
+
+        public Node(T key)
+        {
+            next = null;
+            this.key = key;
+        }
+        
+         public Node()
+        {
+            next = null;
+            
+        } 
+    }
